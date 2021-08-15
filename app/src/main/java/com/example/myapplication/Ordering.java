@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -41,24 +42,28 @@ public class Ordering extends AppCompatActivity {
     ScrollView scrollView;
     TextView tvDate;
     EditText etTime;
-    TextView amountp;
+    TextView amountp,cchild;
     SeekBar seekBar,seekBarc;
-    EditText cpop,cchild;
+    EditText cpop;
     Button rate;
     DatePickerDialog.OnDateSetListener setListener;
+    boolean istimeset;
     TimePickerDialog picker;
     EditText eText;
     RadioButton inside,outside;
     LinearLayout linearLayout;
-    Button reset,up;
-    String counter,ccounter,date,time;
+    Button reset,up,done;
+    RadioGroup rg;
+    String counter,ccounter,date,time,result;
     CheckBox vegan, penut, gluten;
     FloatingActionButton floatingActionButton, floatingActionButton2;
+    Boolean isDateChanged = false;
 
     FloatingActionButton mAddAlarmFab, mAddPersonFab;
     ExtendedFloatingActionButton mAddFab;
     // to check whether sub FABs are visible or not
     Boolean isAllFabsVisible;
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +75,8 @@ public class Ordering extends AppCompatActivity {
         String phone = getIntent().getExtras().getString("phone");
         TextView tvName = findViewById(R.id.name);
         TextView tvAge = findViewById(R.id.tvAge);
-        tvName.setText("hello "+name);
+        tvName.setText(getString(R.string.hello) +name);
+        istimeset=false;
 
         mAddFab = findViewById(R.id.add_fab);
         mAddAlarmFab = findViewById(R.id.add_alarm_fab);
@@ -121,7 +127,7 @@ public class Ordering extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Toast.makeText
-                                (Ordering.this, "your data will not be used",
+                                (Ordering.this,getString(R.string.fill_all_the_field),
                                         Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -131,7 +137,7 @@ public class Ordering extends AppCompatActivity {
                     public void onClick(View view) {
                         Toast.makeText
 
-                                (Ordering.this, "create by Ben Machlev",
+                                (Ordering.this,getString(R.string.create_by_Ben_Machlev),
                                         Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -144,124 +150,112 @@ public class Ordering extends AppCompatActivity {
         //scrolling
         linearLayout = findViewById(R.id.linearLayout1);
         reset=findViewById(R.id.reset);
-        Button done=findViewById(R.id.done);
-        done.setOnClickListener(new OnClickListener() {
-            @SuppressLint("ResourceType")
-            @Override
-            public void onClick(View v) {
-                scrollView.setVisibility(VISIBLE);
-                scrollView.fullScroll(scrollView.FOCUS_DOWN);
-                done.setVisibility(GONE);
-                reset.setVisibility(VISIBLE);
-                tvAge.setText("your number"+phone);
-                if (tvDate.getVisibility()== GONE){
-                    tvDate.setError("you must chose date and time!");
+        done=findViewById(R.id.done);
+        done.setEnabled(false);
+        result =getString(R.string.you_will_sit);
+        rg = (RadioGroup) findViewById(R.id.locate);
 
-                }                TextView order=findViewById(R.id.order);
-                order.setText("your order on "+date+" at "+time);
-                TextView position=findViewById(R.id.posi);
-                String result = " you will sit: ";
-                result+= (inside.isChecked())?"inside":(outside.isChecked())?"outside":"";
-                position.setText(result);
+         done.setOnClickListener(new OnClickListener() {
+                @SuppressLint("ResourceType")
+                @Override
+                public void onClick(View v) {
+                    scrollView.setVisibility(VISIBLE);
+                    scrollView.fullScroll(scrollView.FOCUS_DOWN);
+                    done.setVisibility(GONE);
+                    reset.setVisibility(VISIBLE);
+                    tvAge.setText(getString(R.string.your_number) + phone);
 
-                if(vegan.isChecked()){
-                    ImageView imageView = new ImageView(Ordering.this);
 
-                    // setting the image in the layout
-                    imageView.setImageResource(R.drawable.smallvegan);
+                    TextView order = findViewById(R.id.order);
+                    order.setText(getString(R.string.your_order_on) + date + getString(R.string.at) + time);
+                    TextView position = findViewById(R.id.posi);
+                    result += (inside.isChecked()) ? getString(R.string.inside) : (outside.isChecked()) ? getString(R.string.outside) : "";
+                    position.setText(result);
 
-                    // calling addview with width and height
-                    addvieW(imageView, 200, 200);
-
-                }
-                if(gluten.isChecked()){
-                    ImageView imageView = new ImageView(Ordering.this);
-
-                    // setting the image in the layout
-                    imageView.setImageResource(R.drawable.smallgluten);
-
-                    // calling addview with width and height
-                    addvieW(imageView, 200, 200);
-
-                }
-                if(penut.isChecked()){
-                    ImageView imageView = new ImageView(Ordering.this);
-
-                    // setting the image in the layout
-                    imageView.setImageResource(R.drawable.smallpeanut);
-
-                    // calling addview with width and height
-                    addvieW(imageView, 200, 200);
-
-                }
-
-                // we will click on the add view button
-                if(Integer.parseInt(counter)==0) {
-                    cpop.setError("you must chose value!");
-
-                }
-                // initialising new layout
-                else {
-                    for (int i = 0; i < Integer.parseInt(counter); i++) {
+                    if (vegan.isChecked()) {
                         ImageView imageView = new ImageView(Ordering.this);
 
                         // setting the image in the layout
-                        imageView.setImageResource(R.drawable.mancolor);
+                        imageView.setImageResource(R.drawable.smallvegan);
 
                         // calling addview with width and height
                         addvieW(imageView, 200, 200);
 
-
                     }
-                }if(Integer.parseInt(ccounter)==0) {
-                    cchild.setError("you must enter value!");
-
-                }
-                // initialising new layout
-                else {
-                    for (int i = 0; i < Integer.parseInt(ccounter); i++) {
+                    if (gluten.isChecked()) {
                         ImageView imageView = new ImageView(Ordering.this);
 
                         // setting the image in the layout
-                        imageView.setImageResource(R.drawable.babycolor);
+                        imageView.setImageResource(R.drawable.smallgluten);
 
                         // calling addview with width and height
                         addvieW(imageView, 200, 200);
 
+                    }
+                    if (penut.isChecked()) {
+                        ImageView imageView = new ImageView(Ordering.this);
+
+                        // setting the image in the layout
+                        imageView.setImageResource(R.drawable.smallpeanut);
+
+                        // calling addview with width and height
+                        addvieW(imageView, 200, 200);
 
                     }
+
+                    // initialising new layout
+
+                        for (int i = 0; i < Integer.parseInt(cpop.getText().toString()); i++) {
+                            ImageView imageView = new ImageView(Ordering.this);
+
+                            // setting the image in the layout
+                            imageView.setImageResource(R.drawable.mancolor);
+
+                            // calling addview with width and height
+                            addvieW(imageView, 200, 200);
+
+
+                        }
+
+                        for (int i = 0; i < Integer.parseInt(ccounter); i++) {
+                            ImageView imageView = new ImageView(Ordering.this);
+
+                            // setting the image in the layout
+                            imageView.setImageResource(R.drawable.babycolor);
+
+                            // calling addview with width and height
+                            addvieW(imageView, 200, 200);
+
+
+                        }
+
+                    LinearLayout lButton = new LinearLayout(Ordering.this);
+                    TextView ts = findViewById(R.id.Tscroll);
+                    Button bup = new Button(Ordering.this);
+
+                    // bup.setBackground(arrow_up_float);
+                    lButton.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                    lButton.setGravity(Gravity.CENTER);
+
+
+                    bup.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow, 0, 0, 0);
+                    bup.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            scrollView.scrollTo(2, 2);
+                        }
+                    });
+
+                    linearLayout.addView(bup);
+
                 }
-                LinearLayout lButton = new LinearLayout(Ordering.this);
-                TextView ts=findViewById(R.id.Tscroll);
-                Button bup=new Button(Ordering.this);
-               // bup.setBackground(arrow_up_float);
-                lButton.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                lButton.setGravity(Gravity.CENTER);
+            });
 
-
-                bup.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow, 0, 0, 0);
-
-
-              //  LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(10, LinearLayout.LayoutParams.WRAP_CONTENT);
-                //bup.setLayoutParams(params);
-
-                bup.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        scrollView.scrollTo(2,2);
-                    }
-                });
-
-                linearLayout.addView(bup);
-
-            }
-        });
         reset.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if (v==reset) {
-                   // finish();
                     Intent i = new Intent(Ordering.this, MainActivity.class); //change it to your main class
                     //the following 2 tags are for clearing the backStack and start fresh
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -271,7 +265,7 @@ public class Ordering extends AppCompatActivity {
 
                 }
             }
-        });//}
+        });
 
 
 
@@ -299,18 +293,39 @@ public class Ordering extends AppCompatActivity {
                 datePickerDialog.show();
                 eText.setVisibility(VISIBLE);
 
+
             }
         });
+
         setListener=new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month=month+1;
                 date=day+"/"+month+"/"+year;
+                tvDate.setTextColor(Color.BLACK);
                 tvDate.setText(date);
             }
         };
+        tvDate.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                checkText();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         //open time
         eText=findViewById(R.id.editText1);
+        eText.setText(getString(R.string.set_time));
         eText.setInputType(InputType.TYPE_NULL);
         eText.setOnClickListener(new OnClickListener() {
             @Override
@@ -325,71 +340,49 @@ public class Ordering extends AppCompatActivity {
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
                                 time=sHour+":"+sMinute;
                                 eText.setText(sHour + ":" + sMinute);
+                                eText.setTextColor(Color.BLACK);
+                                istimeset=true;
+                                checkText();
+
                             }
                         }, hour, minutes, true);
                 picker.show();
             }
         });
+        eText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                checkText();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 //amount people
-        seekBar=findViewById(R.id.seekbar);
         cpop=findViewById(R.id.cpop);
         cpop.setText("1");
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                cpop.setText(String.valueOf(progress));
-                counter=String.valueOf(progress);
-                cpop.setSelection(String.valueOf(progress).length());
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                seekBar.setProgress(1);
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        cpop.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                try {
-                    int progress=Integer.parseInt(s.toString());
-                    seekBar.setProgress(progress);
-                }catch (Exception e){}
-            }
-
-
-        });
     //children
         seekBarc=findViewById(R.id.seekbarchild);
-        cchild=findViewById(R.id.child);
-        cchild.setText("1");
+        cchild=findViewById(R.id.pop);
+        ccounter="0";
         seekBarc.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                cchild.setText(String.valueOf(progress));
+                cchild.setText(String.valueOf(progress)+getString(R.string.kids));
                 ccounter = String.valueOf(progress);
-                cchild.setSelection(String.valueOf(progress).length());
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                seekBar.setProgress(1);
+                seekBar.setProgress(0);
 
             }
 
@@ -398,28 +391,7 @@ public class Ordering extends AppCompatActivity {
 
             }
         });
-        cchild.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                try {
-                    int progress=Integer.parseInt(s.toString());
-                    seekBarc.setProgress(progress);
-                }catch (Exception e){}
-            }
-
-
-        });
     }
     public void openDialog(){
         Dialogbox dem=new Dialogbox();
@@ -448,20 +420,35 @@ public class Ordering extends AppCompatActivity {
         linearLayout.addView(imageView);
     }
 
+    private boolean isEmpty(EditText etText) {
+        if (cpop.getText().toString().trim().length() > 0)
+            return false;
+
+        return true;
+    }
     public void onRadioButtonClicked(View view) {
+        checkText();
         boolean checked = ((RadioButton) view).isChecked();
         String str="";
         // Check which radio button was clicked
         switch(view.getId()) {
             case R.id.inside:
                 if(checked)
-                    str = "inside";
+                    str = getString(R.string.inside);
                 break;
             case R.id.outside:
                 if(checked)
-                    str = "outside";
+                    str = getString(R.string.outside);
                 break;
 
+        }
+    }
+
+
+    private void checkText() {
+        if(!eText.getText().toString().isEmpty() && (rg.getCheckedRadioButtonId() != -1) && !tvDate.getText().toString().isEmpty() && istimeset && (!time.matches(" ")))
+        {
+            done.setEnabled(true);
         }
     }
 }

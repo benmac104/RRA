@@ -36,10 +36,10 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:ems="10"
-      android:hint="@string/pick_hour"
+      android:text="@string/pick_hour"
       android:visibility="gone"
       android:textColor="@color/black"
-      android:autofillHints="" />
+      />
 
 
   <RadioGroup
@@ -90,7 +90,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/inside" />
+        android:text="@string/inside"
+        android:textColor="@color/black"/>
 
     <RadioButton
         android:layout_width="wrap_content"
@@ -100,7 +101,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/outside" />
+        android:text="@string/outside"
+        android:textColor="@color/black"/>
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -116,7 +118,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/man"
-        android:text="@string/amount_of_people"
+        android:text="@string/Amount_of_people"
         android:textSize="15sp"
         android:textColor="@color/black" />
 
@@ -129,22 +131,10 @@
         android:inputType="number"
         android:textColor="@color/light_gray"
         android:textSize="15sp"
-        android:maxLength="2" />
+        android:maxLength="2"
+        />
 
   </LinearLayout>
-
-  <SeekBar
-      android:layout_width="150dp"
-      android:layout_height="wrap_content"
-      android:id="@+id/seekbar"
-      android:layout_centerVertical="true"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentLeft="true"
-      android:scaleX="2"
-      android:scaleY="2"
-      android:min="1"
-      android:max="99"
-      android:progress="1"
       /><LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -154,25 +144,15 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:id="@+id/pop"
-      android:text="amount of children"
+      android:text="@string/Amount_of_children"
       android:textSize="15sp"
       android:textColor="@color/black" />
 
-  <EditText
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:hint="@string/enter_number"
-      android:id="@+id/child"
-      android:digits="0123456789."
-      android:inputType="number"
-      android:textColor="@color/light_gray"
-      android:textSize="15sp"
-      android:maxLength="2" />
 
 </LinearLayout>
 
   <SeekBar
-      android:layout_width="150dp"
+      android:layout_width="100dp"
       android:layout_height="wrap_content"
       android:id="@+id/seekbarchild"
       android:layout_centerVertical="true"
@@ -181,8 +161,7 @@
       android:scaleX="2"
       android:scaleY="2"
       android:min="0"
-      android:max="99"
-      android:progress="1"
+      android:max="10"
       />
   <LinearLayout
       android:layout_width="wrap_content"
@@ -213,6 +192,7 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:text="Again"
+        android:background="@drawable/round_button"
         android:id="@+id/reset"/>
   </LinearLayout>
   <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -223,7 +203,7 @@
       android:layout_marginEnd="16dp"
       android:layout_marginBottom="16dp"
       android:backgroundTint="@color/grey_20"
-      android:text="Actions"
+      android:text="@string/actions"
       android:textColor="@color/white"
       app:icon="@drawable/ic_info"
       app:iconTint="@color/white"
@@ -280,7 +260,7 @@
           android:layout_height="wrap_content"
         android:id="@+id/Tscroll"
         android:textColor="@color/red"
-          android:text="scroll down to see your order"
+          android:text="@string/scroll_down_to_see_your_order"
           android:textSize="25sp"
           android:shadowColor="@color/black"
           ></TextView>

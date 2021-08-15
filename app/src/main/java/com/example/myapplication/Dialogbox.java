@@ -43,22 +43,23 @@ public class Dialogbox extends AppCompatDialogFragment {
         //addvieW(imageView, 200, 200);
 
         builder.setView(view)
-                .setTitle("Rate us")
-                .setNegativeButton("cancel",new DialogInterface.OnClickListener(){
+                .setTitle(getResources().getString(R.string.Rate_us))
+                .setNegativeButton(getResources().getString(R.string.cancel),new DialogInterface.OnClickListener(){
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getActivity(), "hope to see you again", Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(getActivity(), getResources().getString(R.string.hope_to_see_you_again), Toast.LENGTH_SHORT).show();
 
                     }
                 })
-                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which){
                         if( rBar.getRating()>3) {
-                        Toast.makeText(getActivity(), "hope to see you again", Toast.LENGTH_SHORT).show(); }
+                        Toast.makeText(getActivity(), getResources().getString(R.string.thank_you), Toast.LENGTH_SHORT).show(); }
                     else {
-                            Toast.makeText(getActivity(), "we will improve us", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getResources().getString(R.string.we_will_improve_us), Toast.LENGTH_SHORT).show();
                         }
 
                     }

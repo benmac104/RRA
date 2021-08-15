@@ -15,13 +15,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String count="0";
     String name;
-    Button minus,plus;
     String ephone,phone;
     String sname=null;
     int minLength=7;
-    String[] users = { "050","051","056","068","053","058","064","065","055","066","067","059","057", "054", "052", "059", "055" };
+    String[] users = { "050","051", "052","053", "054","055","056","057","058","059","064","065","066","067","068" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spin.setAdapter(adapter);
         spin.setOnItemSelectedListener(this);
         EditText sname=findViewById(R.id.name);
+        sname.setTextColor(Color.BLACK);
         EditText sphone=findViewById(R.id.txtVw);
 
         cstrt.setOnClickListener(new View.OnClickListener() {
@@ -41,15 +40,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onClick(View v) {
                 int i = v.getId();
                 if (i == R.id.Cstart) {//check length phone
-                    if (sphone.getText().toString().length() < 7) {
-                        sphone.setError("your phone number to short!");
+                    if(sname.getText().toString().length() <2){
+                        sname.setError(getString(R.string.Please_enter_your_name));
+                        sname.requestFocus();
                     }
-                    else if(sphone.getText().toString().length() > 7) {
 
-                            sphone.setError("your phone number to long!");
-
+                    if (sphone.getText().toString().length() != 7) {
+                        sphone.setError(getString(R.string.Please_enter_your_phone_number));
                     }
-                    else{
+
+                    if(!sname.getText().toString().trim().equals("")&&
+                            !sphone.getText().toString().trim().equals("")&&
+                            sphone.getText().toString().length() ==7){
+
                         Intent intent=new Intent(MainActivity.this,Ordering.class);
                         name = sname.getText().toString();
                         phone = sphone.getText().toString();
