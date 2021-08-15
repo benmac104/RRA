@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ordering"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/newres"
+    >
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/name"
+      android:textColor="@color/black"
+      android:textSize="20sp"/>
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/tvAge"
+      android:visibility="gone"/>
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/date"
+      android:text="@string/pick_a_date"
+      android:textSize="40sp"
+      android:textColor="@color/black" />
+
+  <EditText
+      android:id="@+id/editText1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:hint="@string/pick_hour"
+      android:visibility="gone"
+      android:textColor="@color/black"
+      android:autofillHints="" />
+
+
+  <RadioGroup
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
+  <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      android:background="@drawable/smallvegan"
+      ></ImageView>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vegan"
+        ></CheckBox>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/smallgluten"
+        ></ImageView>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/glu"
+        ></CheckBox>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/smallpeanut"
+        ></ImageView>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nut"
+        ></CheckBox>
+
+  </RadioGroup>
+
+  <RadioGroup
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/locate"
+      android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inside" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inside" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/outside" />
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/outside"></RadioButton>
+
+  </RadioGroup>
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/man"
+        android:text="@string/amount_of_people"
+        android:textSize="15sp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_number"
+        android:id="@+id/cpop"
+        android:digits="0123456789."
+        android:inputType="number"
+        android:textColor="@color/light_gray"
+        android:textSize="15sp"
+        android:maxLength="2" />
+
+  </LinearLayout>
+
+  <SeekBar
+      android:layout_width="150dp"
+      android:layout_height="wrap_content"
+      android:id="@+id/seekbar"
+      android:layout_centerVertical="true"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentLeft="true"
+      android:scaleX="2"
+      android:scaleY="2"
+      android:min="1"
+      android:max="99"
+      android:progress="1"
+      /><LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/pop"
+      android:text="amount of children"
+      android:textSize="15sp"
+      android:textColor="@color/black" />
+
+  <EditText
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:hint="@string/enter_number"
+      android:id="@+id/child"
+      android:digits="0123456789."
+      android:inputType="number"
+      android:textColor="@color/light_gray"
+      android:textSize="15sp"
+      android:maxLength="2" />
+
+</LinearLayout>
+
+  <SeekBar
+      android:layout_width="150dp"
+      android:layout_height="wrap_content"
+      android:id="@+id/seekbarchild"
+      android:layout_centerVertical="true"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentLeft="true"
+      android:scaleX="2"
+      android:scaleY="2"
+      android:min="0"
+      android:max="99"
+      android:progress="1"
+      />
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:showDividers="middle"
+      android:divider="@drawable/empty_tall_divider"
+      >
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/rate"
+        android:id="@+id/rate"
+        android:textColor="#fff" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/done"
+        android:id="@+id/done"
+        android:textColor="#fff"
+        android:visibility="visible"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Again"
+        android:id="@+id/reset"/>
+  </LinearLayout>
+  <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+      android:id="@+id/add_fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="end"
+      android:layout_marginEnd="16dp"
+      android:layout_marginBottom="16dp"
+      android:backgroundTint="@color/grey_20"
+      android:text="Actions"
+      android:textColor="@color/white"
+      app:icon="@drawable/ic_info"
+      app:iconTint="@color/white"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginRight="16dp" />
+  <!--Floating action button for add alarm-->
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+      android:id="@+id/add_alarm_fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="24dp"
+      android:backgroundTint="@color/purple_200"
+      app:fabSize="normal"
+      app:tint="@color/white"
+      app:layout_constraintBottom_toTopOf="@+id/add_fab"
+      app:layout_constraintEnd_toEndOf="@+id/add_fab"
+      app:srcCompat="@drawable/ic_creator"
+      android:contentDescription="@string/app_name"
+      tools:ignore="VectorDrawableCompat" />
+  <!--Action name text for the add alarm button-->
+  <!--Floating action button for add person-->
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+      android:id="@+id/add_person_fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="24dp"
+      android:backgroundTint="@color/purple_200"
+      app:fabSize="normal"
+      app:tint="@color/white"
+      app:layout_constraintBottom_toTopOf="@+id/add_fab"
+      app:layout_constraintEnd_toEndOf="@+id/add_fab"
+      app:layout_constraintStart_toStartOf="@+id/add_fab"
+      app:srcCompat="@drawable/ic_option"
+      android:contentDescription="@string/app_name"
+      tools:ignore="VectorDrawableCompat" />
+  <!--Action name text for the add person button-->
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+    android:id="@+id/scroll"
+      android:visibility="gone">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:id="@+id/linearLayout1"
+      android:gravity="center"
+        >
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+        android:id="@+id/Tscroll"
+        android:textColor="@color/red"
+          android:text="scroll down to see your order"
+          android:textSize="25sp"
+          android:shadowColor="@color/black"
+          ></TextView>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          app:layout_constraintEnd_toEndOf="@+id/Tscroll"
+        android:text="VV"
+        android:id="@+id/down"
+        android:textSize="20sp"
+          android:textColor="@color/red"
+          android:shadowColor="@color/black"></TextView>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+        android:id="@+id/order"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+          >
+      </TextView>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/posi"
+          android:textColor="@color/black"
+          android:textSize="20sp"
+          >
+      </TextView>
+
+    </LinearLayout>
+
+  </ScrollView>
+</LinearLayout>
+
+

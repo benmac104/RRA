@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">reservation restaurant app</string>
+    <string name="welcome_to">welcome to</string>
+    <string name="reservation_restaurant_app">Reservation Restaurant App</string>
+    <string name="enter_yout_name">enter yout name</string>
+    <string name="enter_yout_phone_number">enter yout phone number</string>
+    <string name="enter_to_reservation">enter to reservation</string>
+    <string name="pick_a_date">pick a Date</string>
+    <string name="pick_hour">Pick Hour</string>
+    <string name="vegan">vegan</string>
+    <string name="gluteen">gluteen</string>
+    <string name="peanut">peanut</string>
+    <string name="inside">inside</string>
+    <string name="outside">outside</string>
+    <string name="amount_of_people">amount of people:</string>
+    <string name="enter_number">enter number</string>
+    <string name="rate">rate</string>
+    <string name="done">Done</string>
+    <string name="enter_your_phone_number" />
+    <string name="amount_of_children">amount_of_children:</string>
+</resources>

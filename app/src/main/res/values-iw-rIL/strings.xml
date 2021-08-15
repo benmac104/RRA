@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">הזמנת שולחן למסעדה</string>
+    <string name="welcome_to" translatable="false">ברוך הבא</string>
+    <string name="reservation_restaurant_app">להזמנת שולחן במסעדה</string>
+    <string name="enter_your_name">הכנס את שמך</string>
+    <string name="enter_your_phone_number">הכנס מספר נייד</string>
+    <string name="enter_to_reservation">המשך לההזמנה</string>
+    <string name="pick_a_date">בחר תאריך</string>
+    <string name="pick_hour">בחר שעה</string>
+    <string name="vegan">טבעוני</string>
+    <string name="peanut">בוטנים</string>
+    <string name="inside">בפנים</string>
+    <string name="outside">בחוץ</string>
+    <string name="amount_of_people">כמות אנשים:</string>
+    <string name="enter_number">הכנס מספר</string>
+    <string name="rate">דרג</string>
+    <string name="done">סיום</string>
+    <string name="amount_of_children">amount_of_children:</string>
+</resources>
