@@ -35,7 +35,8 @@
     <string name="Amount_of_people">כמות אנשים</string>
     <string name="hello">"שלום "</string>
     <string name="actions">פעולות</string>
-    <string name="scroll_down_to_see_your_order">גלגל על מנת לראות את הזמנתך</string>
+    <string name="scroll_down_to_see_your_order">גלול  על מנת לראות את הזמנתך</string>
     <string name="your_number">הנייד שלך</string>
     <string name="you_will_sit">"אתה תישב  "</string>
+    <string name="again">שוב</string>
 </resources>

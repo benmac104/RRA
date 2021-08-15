@@ -35,7 +35,6 @@
       android:id="@+id/editText1"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:ems="10"
       android:text="@string/pick_hour"
       android:visibility="gone"
       android:textColor="@color/black"
@@ -191,7 +190,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:text="Again"
+        android:text="@string/again"
         android:background="@drawable/round_button"
         android:id="@+id/reset"/>
   </LinearLayout>

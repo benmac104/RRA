@@ -358,6 +358,7 @@ public class Ordering extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 checkText();
+                Toast.makeText(Ordering.this,"chcel "+eText.getText(),Toast.LENGTH_SHORT);
 
             }
 
