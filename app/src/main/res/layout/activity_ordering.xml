@@ -7,7 +7,8 @@
     tools:context=".Ordering"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/newres"
+    android:background="@drawable/ic_svb"
+    android:id="@+id/mom"
     >
 
   <TextView
@@ -176,12 +177,14 @@
         android:gravity="center_vertical|center_horizontal"
         android:text="@string/rate"
         android:id="@+id/rate"
-        android:textColor="#fff" />
+        android:textColor="#fff"
+        android:layout_marginTop="10dp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/round_button"
         android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="10dp"
         android:text="@string/done"
         android:id="@+id/done"
         android:textColor="#fff"
@@ -190,36 +193,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:layout_marginTop="10dp"
         android:text="@string/again"
         android:background="@drawable/round_button"
         android:id="@+id/reset"/>
   </LinearLayout>
+
+  <!--Floating action button for add alarm-->
   <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
       android:id="@+id/add_fab"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="end"
       android:layout_marginEnd="16dp"
+      android:layout_marginRight="16dp"
       android:layout_marginBottom="16dp"
       android:backgroundTint="@color/grey_20"
       android:text="@string/actions"
       android:textColor="@color/white"
       app:icon="@drawable/ic_info"
       app:iconTint="@color/white"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      android:layout_marginRight="16dp" />
-  <!--Floating action button for add alarm-->
+      app:layout_constraintBottom_toBottomOf="@id/mom"
+      app:layout_constraintEnd_toEndOf="@+id/mom" />
+
   <com.google.android.material.floatingactionbutton.FloatingActionButton
       android:id="@+id/add_alarm_fab"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="24dp"
+      android:layout_marginBottom="5dp"
       android:backgroundTint="@color/purple_200"
       app:fabSize="normal"
       app:tint="@color/white"
-      app:layout_constraintBottom_toTopOf="@+id/add_fab"
-      app:layout_constraintEnd_toEndOf="@+id/add_fab"
       app:srcCompat="@drawable/ic_creator"
       android:contentDescription="@string/app_name"
       tools:ignore="VectorDrawableCompat" />
